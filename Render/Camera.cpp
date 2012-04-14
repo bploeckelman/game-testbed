@@ -29,23 +29,26 @@ Camera::Camera()
 
 void Camera::apply() const
 {
-/*
 	static const glm::vec3 xAxis(1.f, 0.f, 0.f);
 	static const glm::vec3 yAxis(0.f, 1.f, 0.f);
 	static const glm::vec3 zAxis(0.f, 0.f, 1.f);
 
-	glm::mat4 mat;
-	glm::translate(mat, _position);
-	glm::rotate(mat, _rotation.x, xAxis);
-	glm::rotate(mat, _rotation.y, yAxis);
-	glm::rotate(mat, _rotation.z, zAxis);
+	glm::mat4 m;
+	m = glm::rotate(m, 180.f, xAxis);
+	m = glm::rotate(m, _rotation.x, xAxis);
+	m = glm::rotate(m, _rotation.y, yAxis);
+	m = glm::rotate(m, _rotation.z, zAxis);
+	m = glm::translate(m, _position);
 
-	glMultMatrixf(glm::value_ptr(mat));
-*/
-	glRotatef(_rotation.x, 1.f, 0.f, 0.f);
-	glRotatef(_rotation.y, 0.f, 1.f, 0.f);
-	glRotatef(_rotation.z, 0.f, 0.f, 1.f);
-	glTranslatef(_position.x, _position.y, _position.z);
+	glLoadMatrixf(glm::value_ptr(m));
+}
+
+void Camera::lookAt(const glm::vec3& eye
+				  , const glm::vec3& center
+				  , const glm::vec3& up)
+{
+	glm::mat4 m(glm::lookAt(eye,center,up));
+	glLoadMatrixf(glm::value_ptr(m));
 }
 
 void Camera::processInput(const Input& input, const Clock& clock)

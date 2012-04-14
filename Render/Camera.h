@@ -33,7 +33,7 @@ public:
 	Camera();
 
 	void apply() const;
-
+	void lookAt(const glm::vec3& eye, const glm::vec3& center, const glm::vec3& up);
 	void processInput(const sf::Input& input, const sf::Clock& clock);
 
 	void toggleDebug();

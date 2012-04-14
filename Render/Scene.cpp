@@ -50,9 +50,9 @@ void Scene::render( const Clock& clock )
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	glRotatef(180.f, 1.f, 0.f, 0.f);
 
 	camera->apply();
+//	camera->lookAt(glm::vec3(5,10,5), glm::vec3(0,0,0), glm::vec3(0,1,0));
 
 	glPushMatrix();
 //		skybox.render(*camera);
