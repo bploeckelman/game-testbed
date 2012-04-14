@@ -5,7 +5,7 @@
 /************************************************************************/
 #include "MainWindow.h"
 //#include "SceneManager.h"
-//#include "Logger.h"
+#include "Logger.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -41,7 +41,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::init()
 {
-//	Log("Window initializing...");
+	Log("Window initializing...");
 	setupOpenGLState();
 	setupPerspective();
 
@@ -52,12 +52,12 @@ void MainWindow::init()
 
 void MainWindow::cleanup()
 {
-//	Log("Window cleaning up...");
+	Log("Window cleaning up...");
 }
 
 void MainWindow::mainLoop()
 {
-//	Log("Entering main loop...");
+	Log("Entering main loop...");
 	sf::Clock clock;
 	timer.Reset();
 	while( IsOpened() )

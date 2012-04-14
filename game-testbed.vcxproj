@@ -84,10 +84,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Core\Logger.cpp" />
     <ClCompile Include="Core\main.cpp" />
     <ClCompile Include="Core\MainWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Core\Logger.h" />
     <ClInclude Include="Core\MainWindow.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
