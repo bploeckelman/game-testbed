@@ -2,6 +2,17 @@
 /************************************************************************/
 /* Common includes and helper functions
 /************************************************************************/
+#include "Logger.h"
+
+#include <vector>
+
+class Camera;
+
+typedef std::vector<Camera>          CameraVector;
+typedef CameraVector::iterator       CameraVectorIter;
+typedef CameraVector::const_iterator CameraVectorConstIter;
+
+
 namespace constants
 {
 	const float one_third = 1.f / 3.f;
@@ -14,6 +25,7 @@ namespace constants
 	const float one_third_pi = one_third * pi;
 	const float pi_over_180 = pi / 180.f;
 };
+
 
 inline float degToRad(const float deg) { return deg * constants::pi_over_180; }
 inline float radToDeg(const float rad) { return rad / constants::pi_over_180; }

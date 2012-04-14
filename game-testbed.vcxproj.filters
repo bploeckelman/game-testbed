@@ -28,6 +28,9 @@
     <ClCompile Include="Render\Camera.cpp">
       <Filter>Render</Filter>
     </ClCompile>
+    <ClCompile Include="Render\Scene.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\MainWindow.h">
@@ -41,6 +44,9 @@
     </ClInclude>
     <ClInclude Include="Core\Common.h">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\Scene.h">
+      <Filter>Render</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

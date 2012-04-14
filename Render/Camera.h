@@ -36,6 +36,8 @@ public:
 
 	void processInput(const sf::Input& input, const sf::Clock& clock);
 
+	void toggleDebug();
+
 	void position(const glm::vec3& p);
 	void position(const float x, const float y, const float z);
 	const glm::vec3& position() const;
@@ -48,6 +50,8 @@ public:
 	void rotationSpeed(const float x, const float y, const float z);
 	const glm::vec3& rotationSpeed() const;
 };
+
+inline void Camera::toggleDebug() { debug = !debug; }
 
 inline void Camera::position(const glm::vec3& p) { _position = p; }
 inline void Camera::position(const float x, const float y, const float z) { _position = glm::vec3(x,y,z); }

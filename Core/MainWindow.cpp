@@ -4,12 +4,9 @@
 /* The main sfml window for an application
 /************************************************************************/
 #include "MainWindow.h"
-//#include "SceneManager.h"
-#include "Logger.h"
+#include "../Render/Scene.h"
 
 #include <SFML/Graphics.hpp>
-
-const float PI = 3.14159265358979323846f;
 
 // Application window settings, video mode, window style
 const std::string MainWindow::title("Game Testbed");
@@ -27,9 +24,9 @@ const unsigned int MainWindow::windowStyle = sf::Style::Close | sf::Style::Resiz
 
 
 MainWindow::MainWindow()
-	: sf::Window(videoMode, title, windowStyle, windowSettings),
-//	sceneManager(),
-	timer()
+	: sf::Window(videoMode, title, windowStyle, windowSettings)
+	, scene()
+	, timer()
 {
 	init();
 }
@@ -45,7 +42,7 @@ void MainWindow::init()
 	setupOpenGLState();
 	setupPerspective();
 
-//	sceneManager.setup();
+	scene.setup();
 
 	mainLoop();
 }
@@ -72,14 +69,14 @@ void MainWindow::update(const sf::Clock& clock)
 {
 	handleEvents();
 
-//	sceneManager.update(clock, GetInput());
+	scene.update(clock, GetInput());
 }
 
 void MainWindow::render(const sf::Clock& clock)
 {
 	SetActive();
 
-//	sceneManager.render(clock);
+	scene.render(clock);
 
 	Display();
 }
@@ -110,8 +107,8 @@ void MainWindow::setupPerspective()
 	const float aspect = static_cast<float>(GetWidth() / GetHeight());
 	const float fov    = 70.f;
 	const float _near  = 1.f;
-	const float _far   = 100000.f;
-	const float side   = tan((fov * (PI / 180.f)) / 2.f) * _near;
+	const float _far   = 1000.f;
+	const float side   = tan(0.5f * degToRad(fov)) * _near;
 
 	glFrustum(-side, side, -side / aspect, side / aspect, _near, _far);
 

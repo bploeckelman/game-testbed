@@ -88,12 +88,14 @@
     <ClCompile Include="Core\main.cpp" />
     <ClCompile Include="Core\MainWindow.cpp" />
     <ClCompile Include="Render\Camera.cpp" />
+    <ClCompile Include="Render\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Common.h" />
     <ClInclude Include="Core\Logger.h" />
     <ClInclude Include="Core\MainWindow.h" />
     <ClInclude Include="Render\Camera.h" />
+    <ClInclude Include="Render\Scene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -7,6 +7,8 @@
 #include "../Core/Common.h"
 
 #include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Clock.hpp>
@@ -19,17 +21,33 @@ using namespace sf;
 
 
 Camera::Camera()
-	: _position(0.f, 10.f, 0.f)
+	: debug(false)
+	, _position(0.f, 10.f, 0.f)
 	, _rotation(0.f, 0.f, 0.f)
 	, _rotationSpeed(0.8f, 0.8f, 1.f)
 { }
 
 void Camera::apply() const
 {
+/*
+	static const glm::vec3 xAxis(1.f, 0.f, 0.f);
+	static const glm::vec3 yAxis(0.f, 1.f, 0.f);
+	static const glm::vec3 zAxis(0.f, 0.f, 1.f);
+
+	glm::mat4 mat;
+
+	glm::translate(mat, _position);
+
+	glm::rotate(mat, _rotation.x, xAxis);
+	glm::rotate(mat, _rotation.y, yAxis);
+	glm::rotate(mat, _rotation.z, zAxis);
+
+	glMultMatrixf(glm::value_ptr(mat));
+*/
 	glRotatef(_rotation.x, 1.f, 0.f, 0.f);
 	glRotatef(_rotation.y, 0.f, 1.f, 0.f);
 	glRotatef(_rotation.z, 0.f, 0.f, 1.f);
-	glTranslatef(_position.x, _position.y, _position.z);
+	glTranslatef(_position.x, _position.y, -_position.z);
 }
 
 void Camera::processInput(const Input& input, const Clock& clock)
@@ -43,7 +61,7 @@ void Camera::processInput(const Input& input, const Clock& clock)
 
 	float moveSpeed   = 0.f;
 	if( input.IsKeyDown(Key::W) )		moveSpeed = -2.f;
-	if( input.IsKeyDown(Key::S) )		moveSpeed = 2.f;
+	if( input.IsKeyDown(Key::S) )		moveSpeed =  2.f;
 
 	float strafeSpeed = 0.f;
 	if( input.IsKeyDown(Key::A) )		strafeSpeed = 2.f;
@@ -69,8 +87,8 @@ void Camera::turn(const Direction& direction, const sf::Clock& clock)
 {
 	switch(direction)
 	{
-	case left:	_rotation.y += _rotationSpeed.y; break;
-	case right: _rotation.y -= _rotationSpeed.y; break;
+	case left:	_rotation.y -= _rotationSpeed.y; break;
+	case right: _rotation.y += _rotationSpeed.y; break;
 	case up:	_rotation.x -= _rotationSpeed.x; break;
 	case down:	_rotation.x += _rotationSpeed.x; break;
 	case lroll: _rotation.z += _rotationSpeed.z;  break;
@@ -84,9 +102,9 @@ void Camera::move(const float forwardSpeed, const float strafeSpeed)
 	float& y = _position.y;
 	float& z = _position.z;
 
-	x -= static_cast<float>(sin(degToRad(_rotation.y)))   * forwardSpeed;
+	x -= static_cast<float>(sin(degToRad(_rotation.y))) * forwardSpeed;
 	y += static_cast<float>(sin(degToRad(_rotation.x))) * forwardSpeed;
-	z += static_cast<float>(cos(degToRad(_rotation.y)))   * forwardSpeed;
+	z += static_cast<float>(cos(degToRad(_rotation.y))) * forwardSpeed;
 
 	x += static_cast<float>(cos(degToRad(_rotation.y))) * strafeSpeed;
 	z += static_cast<float>(sin(degToRad(_rotation.y))) * strafeSpeed;
@@ -94,5 +112,5 @@ void Camera::move(const float forwardSpeed, const float strafeSpeed)
 
 inline void Camera::moveY(const float speed)
 {
-	_position.y += speed;
+	_position.y -= speed;
 }

@@ -4,10 +4,9 @@
 /* ----------
 /* The main sfml window for an application
 /************************************************************************/
-//#include "SceneManager.h"
+#include "../Render/Scene.h"
 
 #include <SFML/Window.hpp>
-//#include <SFML/Graphics/Sprite.hpp>
 
 #include <string>
 
@@ -24,7 +23,7 @@ private:
 	static const unsigned int		windowStyle;
 	static const sf::WindowSettings	windowSettings;
 
-//	SceneManager sceneManager;
+	Scene     scene;
 	sf::Clock timer;
 
 	void init();
@@ -37,6 +36,4 @@ private:
 	void setupPerspective();
 
 	void handleEvents();
-
-	void renderTestCube();
 };
