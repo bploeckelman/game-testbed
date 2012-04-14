@@ -63,14 +63,14 @@ void Scene::render( const Clock& clock )
 	glPopMatrix();
 
 	const float s = 5.f;
-	for(int x = 0; x < 50; ++x)
-	for(int z = 0; z < 50; ++z)
+	for(int x = -25; x < 25; ++x)
+	for(int z = -25; z < 25; ++z)
 	{
 		const float r = Randomizer::Random(0.f, 1.f);
 		const float g = Randomizer::Random(0.f, 1.f);
 		const float b = Randomizer::Random(0.f, 1.f);
 		glColor3f(r, g, b);
-		renderTestCube(glm::vec3(s * x, 0.f, s * z));
+		renderTestCube(glm::vec3(s * x, 0.f, s * z), 2.5f);
 	}
 }
 

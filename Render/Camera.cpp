@@ -35,9 +35,7 @@ void Camera::apply() const
 	static const glm::vec3 zAxis(0.f, 0.f, 1.f);
 
 	glm::mat4 mat;
-
 	glm::translate(mat, _position);
-
 	glm::rotate(mat, _rotation.x, xAxis);
 	glm::rotate(mat, _rotation.y, yAxis);
 	glm::rotate(mat, _rotation.z, zAxis);
@@ -60,16 +58,16 @@ void Camera::processInput(const Input& input, const Clock& clock)
 	if( input.IsKeyDown(Key::X) )		turn(rroll, clock);
 
 	float moveSpeed   = 0.f;
-	if( input.IsKeyDown(Key::W) )		moveSpeed = -2.f;
-	if( input.IsKeyDown(Key::S) )		moveSpeed =  2.f;
+	if( input.IsKeyDown(Key::W) )		moveSpeed = -1.f;
+	if( input.IsKeyDown(Key::S) )		moveSpeed =  1.f;
 
 	float strafeSpeed = 0.f;
-	if( input.IsKeyDown(Key::A) )		strafeSpeed =  2.f;
-	if( input.IsKeyDown(Key::D) )		strafeSpeed = -2.f;
+	if( input.IsKeyDown(Key::A) )		strafeSpeed =  1.f;
+	if( input.IsKeyDown(Key::D) )		strafeSpeed = -1.f;
 
 	move(moveSpeed,strafeSpeed);
 
-	float y = 2.f;
+	float y = 1.f;
 	if( input.IsKeyDown(Key::Q) )		moveY(-y);
 	if( input.IsKeyDown(Key::E) )		moveY(y);
 
