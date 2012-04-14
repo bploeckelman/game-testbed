@@ -57,7 +57,7 @@ void MainWindow::cleanup()
 
 void MainWindow::mainLoop()
 {
-i//	Log("Entering main loop...");
+//	Log("Entering main loop...");
 	sf::Clock clock;
 	timer.Reset();
 	while( IsOpened() )
