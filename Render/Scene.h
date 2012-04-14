@@ -5,6 +5,7 @@
 /* A scene consisting of a camera and a number of game objects
 /************************************************************************/
 #include "Camera.h"
+#include "Skybox.h"
 #include "../Core/Common.h"
 
 #include <glm/glm.hpp>
@@ -21,6 +22,7 @@ class Scene
 protected:
 	Camera		*camera;	// the current camera
 	CameraVector cameras;	// all the cameras in the scene
+	Skybox       skybox;
 
 public:
 	Scene();

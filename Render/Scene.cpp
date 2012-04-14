@@ -4,6 +4,7 @@
 /* A scene consisting of a camera and a number of game objects
 /************************************************************************/
 #include "Scene.h"
+#include "Skybox.h"
 #include "../Core/Common.h"
 
 #include <glm/glm.hpp>
@@ -19,6 +20,7 @@ using namespace sf;
 Scene::Scene()
 	: camera(nullptr)
 	, cameras()
+	, skybox()
 {
 	init();
 }
@@ -55,13 +57,14 @@ void Scene::render( const Clock& clock )
 //	camera->lookAt(glm::vec3(5,10,5), glm::vec3(0,0,0), glm::vec3(0,1,0));
 
 	glPushMatrix();
-//		skybox.render(*camera);
+		skybox.render(*camera);
 	glPopMatrix();
 
 	glPushMatrix();
 //		ground.render();
 	glPopMatrix();
 
+	glDisable(GL_TEXTURE_2D);
 	const float s = 5.f;
 	for(int x = -25; x < 25; ++x)
 	for(int z = -25; z < 25; ++z)
@@ -72,6 +75,7 @@ void Scene::render( const Clock& clock )
 		glColor3f(r, g, b);
 		renderTestCube(glm::vec3(s * x, 0.f, s * z), 2.5f);
 	}
+	glEnable(GL_TEXTURE_2D);
 }
 
 void Scene::init()
