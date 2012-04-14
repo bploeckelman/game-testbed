@@ -24,7 +24,7 @@ Camera::Camera()
 	: debug(false)
 	, _position(0.f, 10.f, 0.f)
 	, _rotation(0.f, 0.f, 0.f)
-	, _rotationSpeed(0.8f, 0.8f, 1.f)
+	, _rotationSpeed(0.7f, 0.9f, 1.f)
 { }
 
 void Camera::apply() const
@@ -47,7 +47,7 @@ void Camera::apply() const
 	glRotatef(_rotation.x, 1.f, 0.f, 0.f);
 	glRotatef(_rotation.y, 0.f, 1.f, 0.f);
 	glRotatef(_rotation.z, 0.f, 0.f, 1.f);
-	glTranslatef(_position.x, _position.y, -_position.z);
+	glTranslatef(_position.x, _position.y, _position.z);
 }
 
 void Camera::processInput(const Input& input, const Clock& clock)
@@ -64,7 +64,7 @@ void Camera::processInput(const Input& input, const Clock& clock)
 	if( input.IsKeyDown(Key::S) )		moveSpeed =  2.f;
 
 	float strafeSpeed = 0.f;
-	if( input.IsKeyDown(Key::A) )		strafeSpeed = 2.f;
+	if( input.IsKeyDown(Key::A) )		strafeSpeed =  2.f;
 	if( input.IsKeyDown(Key::D) )		strafeSpeed = -2.f;
 
 	move(moveSpeed,strafeSpeed);
@@ -87,8 +87,8 @@ void Camera::turn(const Direction& direction, const sf::Clock& clock)
 {
 	switch(direction)
 	{
-	case left:	_rotation.y -= _rotationSpeed.y; break;
-	case right: _rotation.y += _rotationSpeed.y; break;
+	case left:	_rotation.y += _rotationSpeed.y; break;
+	case right: _rotation.y -= _rotationSpeed.y; break;
 	case up:	_rotation.x -= _rotationSpeed.x; break;
 	case down:	_rotation.x += _rotationSpeed.x; break;
 	case lroll: _rotation.z += _rotationSpeed.z;  break;
@@ -112,5 +112,5 @@ void Camera::move(const float forwardSpeed, const float strafeSpeed)
 
 inline void Camera::moveY(const float speed)
 {
-	_position.y -= speed;
+	_position.y += speed;
 }

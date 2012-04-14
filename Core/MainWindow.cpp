@@ -7,6 +7,7 @@
 #include "../Render/Scene.h"
 
 #include <SFML/Graphics.hpp>
+#include <SFML/System/Randomizer.hpp>
 
 // Application window settings, video mode, window style
 const std::string MainWindow::title("Game Testbed");
@@ -29,6 +30,7 @@ MainWindow::MainWindow()
 	, timer()
 {
 	init();
+	sf::Randomizer::SetSeed(time(0));
 }
 
 MainWindow::~MainWindow()

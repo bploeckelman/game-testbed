@@ -11,6 +11,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Clock.hpp>
 #include <SFML/Window/Input.hpp>
+#include <SFML/System/Randomizer.hpp>
 
 using namespace sf;
 
@@ -49,7 +50,7 @@ void Scene::render( const Clock& clock )
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-//	glRotatef(180.f, 1.f, 0.f, 0.f);
+	glRotatef(180.f, 1.f, 0.f, 0.f);
 
 	camera->apply();
 
@@ -61,9 +62,16 @@ void Scene::render( const Clock& clock )
 //		ground.render();
 	glPopMatrix();
 
+	const float s = 5.f;
 	for(int x = 0; x < 50; ++x)
 	for(int z = 0; z < 50; ++z)
-		renderTestCube(glm::vec3(x, 0.f, z));
+	{
+		const float r = Randomizer::Random(0.f, 1.f);
+		const float g = Randomizer::Random(0.f, 1.f);
+		const float b = Randomizer::Random(0.f, 1.f);
+		glColor3f(r, g, b);
+		renderTestCube(glm::vec3(s * x, 0.f, s * z));
+	}
 }
 
 void Scene::init()
