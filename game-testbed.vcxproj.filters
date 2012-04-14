@@ -11,7 +11,7 @@
     <Filter Include="TileMap">
       <UniqueIdentifier>{f097d59d-d4f9-4e05-b6a2-5d105a7c8308}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Renderer">
+    <Filter Include="Render">
       <UniqueIdentifier>{cb32ee5e-1dc2-4402-b7c2-898713a20324}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -25,12 +25,21 @@
     <ClCompile Include="Core\Logger.cpp">
       <Filter>Core</Filter>
     </ClCompile>
+    <ClCompile Include="Render\Camera.cpp">
+      <Filter>Render</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\MainWindow.h">
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="Core\Logger.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\Camera.h">
+      <Filter>Render</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Common.h">
       <Filter>Core</Filter>
     </ClInclude>
   </ItemGroup>
