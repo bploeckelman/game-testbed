@@ -6,6 +6,10 @@
 #include "MainWindow.h"
 #include "../Render/Scene.h"
 
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Randomizer.hpp>
 
@@ -110,9 +114,9 @@ void MainWindow::setupPerspective()
 	const float fov    = 70.f;
 	const float _near  = 1.f;
 	const float _far   = 1000.f;
-	const float side   = tan(0.5f * degToRad(fov)) * _near;
 
-	glFrustum(-side, side, -side / aspect, side / aspect, _near, _far);
+	glm::mat4 m(glm::perspective(fov, aspect, _near, _far));
+	glLoadMatrixf(glm::value_ptr(m));
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
