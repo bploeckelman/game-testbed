@@ -21,5 +21,11 @@ public:
 			, const unsigned int height=100);
 
 	void render();
+	double heightAt(const unsigned int row, const unsigned int col);
 
 };
+
+inline double HeightMap::heightAt(const unsigned int row, const unsigned int col)
+{
+	return heights(row,col);
+}

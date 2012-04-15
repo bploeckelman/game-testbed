@@ -8,7 +8,8 @@
 #include "../Core/Common.h"
 
 #include <SFML/Graphics.hpp>
-#include <SFML/System/Randomizer.hpp>
+
+#include <glm/gtc/random.hpp>
 
 #include <vector>
 #include <cmath>
@@ -57,6 +58,6 @@ void HeightMap::randomize()
 	for(unsigned int row = 0; row < heights.rows(); ++row)
 	for(unsigned int col = 0; col < heights.cols(); ++col)
 	{
-		heights(row,col) = sf::Randomizer::Random(0.f, 1.f);
+		heights(row,col) = glm::gaussRand(1.0, 0.4);
 	}
 }
