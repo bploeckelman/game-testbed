@@ -8,6 +8,8 @@
 
 typedef Matrix2d<double> HeightMatrix;
 
+class Camera;
+
 
 class HeightMap
 {
@@ -20,7 +22,7 @@ public:
 	HeightMap(const unsigned int width=100
 			, const unsigned int height=100);
 
-	void render();
+	void render(Camera *camera);
 	double heightAt(const unsigned int row, const unsigned int col);
 
 };

@@ -4,8 +4,9 @@
 /* A basic height map 
 /************************************************************************/
 #include "HeightMap.h"
-#include "../Utility/Matrix2d.h"
 #include "../Core/Common.h"
+#include "../Render/Camera.h"
+#include "../Utility/Matrix2d.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -23,10 +24,24 @@ HeightMap::HeightMap(const unsigned int width, const unsigned int height)
 	randomize();
 }
 
-void HeightMap::render()
+void HeightMap::render(Camera *camera)
 {
 	const float groundScale = 20.f;
 	const float heightScale = 30.f;
+
+	if( camera != nullptr )
+	{
+		glm::vec3 campos(camera->position());
+		glm::vec2 mapcoords(-campos.x / groundScale, -campos.z / groundScale);
+		if( mapcoords.x >= 0 && mapcoords.y >= 0 
+		 && mapcoords.x < heights.cols() && mapcoords.y < heights.rows() )
+		{
+			const double height = heightAt(mapcoords.x, mapcoords.y) * heightScale;
+			if( campos.y < height ) 
+				camera->position(glm::vec3(campos.x, height - heightScale, campos.z));
+		}
+	}
+
 	for(unsigned int row = 0; row < (heights.rows() - 1); ++row)
 	{
 		glBegin(GL_TRIANGLE_STRIP);
