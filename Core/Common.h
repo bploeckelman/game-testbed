@@ -2,7 +2,7 @@
 /************************************************************************/
 /* Common includes and helper functions
 /************************************************************************/
-#include "Logger.h"
+#include "../Utility/Logger.h"
 
 #include <vector>
 

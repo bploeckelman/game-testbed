@@ -84,21 +84,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Core\Logger.cpp" />
     <ClCompile Include="Core\main.cpp" />
     <ClCompile Include="Core\MainWindow.cpp" />
+    <ClCompile Include="HeightMap\HeightMap.cpp" />
     <ClCompile Include="Render\Camera.cpp" />
     <ClCompile Include="Render\Scene.cpp" />
     <ClCompile Include="Render\Skybox.cpp" />
+    <ClCompile Include="Utility\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Common.h" />
-    <ClInclude Include="Core\dirent.h" />
-    <ClInclude Include="Core\Logger.h" />
     <ClInclude Include="Core\MainWindow.h" />
+    <ClInclude Include="HeightMap\HeightMap.h" />
     <ClInclude Include="Render\Camera.h" />
     <ClInclude Include="Render\Scene.h" />
     <ClInclude Include="Render\Skybox.h" />
+    <ClInclude Include="Utility\dirent.h" />
+    <ClInclude Include="Utility\Logger.h" />
+    <ClInclude Include="Utility\Matrix2d.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -10,15 +10,18 @@
     <Filter Include="Render">
       <UniqueIdentifier>{cb32ee5e-1dc2-4402-b7c2-898713a20324}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HeightMap">
+      <UniqueIdentifier>{b2d5cee0-3529-4e37-a800-e24a3575dea8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{96cf8985-fddc-4c0a-b95c-dcecb6585f0c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Core\main.cpp">
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Core\MainWindow.cpp">
-      <Filter>Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Logger.cpp">
       <Filter>Core</Filter>
     </ClCompile>
     <ClCompile Include="Render\Camera.cpp">
@@ -30,12 +33,15 @@
     <ClCompile Include="Render\Skybox.cpp">
       <Filter>Render</Filter>
     </ClCompile>
+    <ClCompile Include="HeightMap\HeightMap.cpp">
+      <Filter>HeightMap</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\Logger.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\MainWindow.h">
-      <Filter>Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Logger.h">
       <Filter>Core</Filter>
     </ClInclude>
     <ClInclude Include="Render\Camera.h">
@@ -50,8 +56,17 @@
     <ClInclude Include="Render\Skybox.h">
       <Filter>Render</Filter>
     </ClInclude>
-    <ClInclude Include="Core\dirent.h">
-      <Filter>Core</Filter>
+    <ClInclude Include="HeightMap\HeightMap.h">
+      <Filter>HeightMap</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\dirent.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\Logger.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\Matrix2d.h">
+      <Filter>Utility</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

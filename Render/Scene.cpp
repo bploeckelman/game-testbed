@@ -5,6 +5,7 @@
 /************************************************************************/
 #include "Scene.h"
 #include "Skybox.h"
+#include "../HeightMap/HeightMap.h"
 #include "../Core/Common.h"
 
 #include <glm/glm.hpp>
@@ -21,6 +22,7 @@ Scene::Scene()
 	: camera(nullptr)
 	, cameras()
 	, skybox()
+	, heightmap()
 {
 	init();
 }
@@ -60,10 +62,13 @@ void Scene::render( const Clock& clock )
 		skybox.render(*camera);
 	glPopMatrix();
 
+	glDisable(GL_TEXTURE_2D);
 	glPushMatrix();
-//		ground.render();
+		glColor3d(1.0, 1.0, 1.0);
+		heightmap.render();
 	glPopMatrix();
-
+	glEnable(GL_TEXTURE_2D);
+/*
 	glDisable(GL_TEXTURE_2D);
 	const float s = 5.f;
 	for(int x = -25; x < 25; ++x)
@@ -76,6 +81,7 @@ void Scene::render( const Clock& clock )
 		renderTestCube(glm::vec3(s * x, 0.f, s * z), 2.5f);
 	}
 	glEnable(GL_TEXTURE_2D);
+*/
 }
 
 void Scene::init()

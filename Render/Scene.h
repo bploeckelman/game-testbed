@@ -6,6 +6,7 @@
 /************************************************************************/
 #include "Camera.h"
 #include "Skybox.h"
+#include "../HeightMap/HeightMap.h"
 #include "../Core/Common.h"
 
 #include <glm/glm.hpp>
@@ -23,6 +24,7 @@ protected:
 	Camera		*camera;	// the current camera
 	CameraVector cameras;	// all the cameras in the scene
 	Skybox       skybox;
+	HeightMap    heightmap;
 
 public:
 	Scene();

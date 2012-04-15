@@ -93,10 +93,12 @@ void MainWindow::setupOpenGLState()
 
 	glDisable(GL_LIGHTING);
 
-	glEnable(GL_CULL_FACE);
+//	glEnable(GL_CULL_FACE);
+	glDisable(GL_CULL_FACE);
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_POINTS);
 	glEnable(GL_POINT_SMOOTH);
+	glPointSize(10.f);
 
 	glEnable(GL_DEPTH_TEST);
 	glDepthMask(GL_TRUE);
@@ -113,7 +115,7 @@ void MainWindow::setupPerspective()
 	const float aspect = static_cast<float>(GetWidth() / GetHeight());
 	const float fov    = 70.f;
 	const float _near  = 1.f;
-	const float _far   = 1000.f;
+	const float _far   = 10000.f;
 
 	glm::mat4 m(glm::perspective(fov, aspect, _near, _far));
 	glLoadMatrixf(glm::value_ptr(m));
