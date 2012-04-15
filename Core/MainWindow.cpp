@@ -34,7 +34,7 @@ MainWindow::MainWindow()
 	, timer()
 {
 	init();
-	sf::Randomizer::SetSeed(time(0));
+	sf::Randomizer::SetSeed(0);
 }
 
 MainWindow::~MainWindow()
