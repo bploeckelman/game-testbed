@@ -1,7 +1,6 @@
 #include "Skybox.h"
 #include "Camera.h"
-//#include "Scene.h"
-#include "../Core/dirent.h"
+#include "../Utility/dirent.h"
 
 #include <SFML/Graphics.hpp>
 
