@@ -6,8 +6,9 @@
 /************************************************************************/
 #include "Camera.h"
 #include "Skybox.h"
-#include "../HeightMap/HeightMap.h"
 #include "../Core/Common.h"
+#include "../Utility/Plane.h"
+#include "../HeightMap/HeightMap.h"
 
 #include <glm/glm.hpp>
 
@@ -36,6 +37,7 @@ public:
 
 	void renderTestCube(const glm::vec3& position=glm::vec3(0.f, 0.f, 0.f)
 					  , const float scale=1.f);
+	void renderTestPlane(const Plane& plane, const float radius=1.f);
 
 	const glm::vec3& cameraPosition() const;
 	

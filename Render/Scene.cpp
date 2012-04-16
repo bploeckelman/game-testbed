@@ -5,10 +5,12 @@
 /************************************************************************/
 #include "Scene.h"
 #include "Skybox.h"
-#include "../HeightMap/HeightMap.h"
 #include "../Core/Common.h"
+#include "../Utility/Plane.h"
+#include "../HeightMap/HeightMap.h"
 
 #include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Clock.hpp>
@@ -67,6 +69,11 @@ void Scene::render( const Clock& clock )
 		glColor3d(1.0, 1.0, 1.0);
 		heightmap.render(camera);
 	glPopMatrix();
+
+	static const Plane plane(glm::vec3(0,0,0), glm::vec3(1,1,0), glm::vec3(0,1,1));
+//	static const Plane plane(glm::vec3(0,0,0), glm::vec3(0,1,0));
+	renderTestPlane(plane, 200.f);
+
 	glEnable(GL_TEXTURE_2D);
 }
 
@@ -130,4 +137,47 @@ void Scene::renderTestCube(const glm::vec3& position, const float scale)
 	glEnd();
 
 	glPopMatrix(); 
+}
+
+void Scene::renderTestPlane(const Plane& plane, const float radius)
+{
+	// Calculate/get plane details
+	const glm::vec3& p(plane.point());
+	const glm::vec3& n(plane.normal());
+	const glm::vec3  s(n.y - n.z, n.z - n.x, n.x - n.y); // orthogonal to n
+	const glm::vec3  t(glm::normalize(glm::cross(s,n)));
+	const float d = plane.distance();
+
+	// Calculate vertices
+	const glm::vec3 v0(radius * 
+			 glm::vec3(( s.x + t.x) + n.x * d
+					 , ( s.y + t.y) + n.y * d
+					 , ( s.z + t.z) + n.z * d));
+	const glm::vec3 v1(radius * 
+			 glm::vec3(( s.x - t.x) + n.x * d
+					 , ( s.y - t.y) + n.y * d
+					 , ( s.z - t.z) + n.z * d));
+	const glm::vec3 v2(radius * 
+			 glm::vec3((-s.x + t.x) + n.x * d
+					 , (-s.y + t.y) + n.y * d
+					 , (-s.z + t.z) + n.z * d));
+	const glm::vec3 v3(radius * 
+			 glm::vec3((-s.x - t.x) + n.x * d
+					 , (-s.y - t.y) + n.y * d
+					 , (-s.z - t.z) + n.z * d));
+
+	glPushMatrix();
+
+	// Draw the plane 
+	glColor3d(0.3, 0.3, 0.3);
+	glBegin(GL_TRIANGLE_STRIP);
+	
+		glVertex3fv(glm::value_ptr(v0));
+		glVertex3fv(glm::value_ptr(v1));
+		glVertex3fv(glm::value_ptr(v2));
+		glVertex3fv(glm::value_ptr(v3));
+
+	glEnd();
+
+	glPopMatrix();
 }
