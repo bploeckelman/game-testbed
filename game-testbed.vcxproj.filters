@@ -39,6 +39,9 @@
     <ClCompile Include="Utility\Logger.cpp">
       <Filter>Utility</Filter>
     </ClCompile>
+    <ClCompile Include="Utility\ImageManager.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\MainWindow.h">
@@ -69,6 +72,9 @@
       <Filter>Utility</Filter>
     </ClInclude>
     <ClInclude Include="Utility\Plane.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\ImageManager.h">
       <Filter>Utility</Filter>
     </ClInclude>
   </ItemGroup>

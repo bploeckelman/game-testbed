@@ -90,6 +90,7 @@
     <ClCompile Include="Render\Camera.cpp" />
     <ClCompile Include="Render\Scene.cpp" />
     <ClCompile Include="Render\Skybox.cpp" />
+    <ClCompile Include="Utility\ImageManager.cpp" />
     <ClCompile Include="Utility\Logger.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -100,6 +101,7 @@
     <ClInclude Include="Render\Scene.h" />
     <ClInclude Include="Render\Skybox.h" />
     <ClInclude Include="Utility\dirent.h" />
+    <ClInclude Include="Utility\ImageManager.h" />
     <ClInclude Include="Utility\Logger.h" />
     <ClInclude Include="Utility\Matrix2d.h" />
     <ClInclude Include="Utility\Plane.h" />
